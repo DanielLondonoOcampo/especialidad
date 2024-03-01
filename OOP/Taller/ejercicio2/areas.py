@@ -12,6 +12,7 @@ def main():
                     break
                 except ValueError:
                     print("Valor inválido")
+                    continue
             case "rectangulo", "r":
                 try:
                     base, altura = to_float(input("Indique base y altura separando por comas: ").split(","))
@@ -19,6 +20,7 @@ def main():
                     break
                 except ValueError:
                     print("Valor inválido")
+                    continue
             case "cubo", "q":
                 try:
                     arista = float(input("Indique la longitud de la arista: "))
@@ -26,6 +28,7 @@ def main():
                     break
                 except ValueError:
                     print("Valor inválido")
+                    continue
             case _:
                 print("Figura inválida")
 
