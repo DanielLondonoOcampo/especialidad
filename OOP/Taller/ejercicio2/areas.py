@@ -14,7 +14,7 @@ def main():
                     print("Valor inválido")
             case "rectangulo", "r":
                 try:
-                    base, altura = float(input("Indique base y altura separando por comas: ").split(","))
+                    base, altura = to_float(input("Indique base y altura separando por comas: ").split(","))
                     print(f"Área: {base * altura}")
                     break
                 except ValueError:
@@ -29,6 +29,9 @@ def main():
             case _:
                 print("Figura inválida")
 
+
+def to_float(*args):
+    return map(float, args)
 
 
 if __name__ == "__main__":
