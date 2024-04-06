@@ -108,4 +108,31 @@ class Nodo:
             self.hijos.append(hijo)
         return self.hijos
     
-    
+    def hijo_mejor(self, problema, metrica = "valor", criterio = "menor"):
+        if not self.hijos:
+            return None
+        mejor = self.hijos[0]
+        for hijo in self.hijos:
+            for objetivo in problema.estado_objetivo:
+                if metrica == "valor":
+                    valor_hijo = hijo.valores[objetivo.nombre]
+                    valor_mejor = mejor.valores[objetivo.nombre]
+                    if (criterio == "menor" and valor_hijo < valor_mejor):
+                        mejor = hijo
+                    elif (criterio == "mayor" and valor_hijo > valor_mejor):
+                        mejor = hijo
+                elif metrica == "heuristica":
+                    heuristica_hijo = hijo.heuristica[objetivo.nombre]
+                    heuristica_mejor = mejor.heuristica[objetivo.nombre]
+                    if (criterio == "menor" and heuristica_hijo < heuristica_mejor):
+                        mejor = hijo
+                    elif (criterio == "mayor" and heuristica_hijo > heuristica_mejor):
+                        mejor = hijo
+                elif metrica == "costo":
+                    costo_camino_hijo = problema.costo_camino(hijo)
+                    costo_camino_mejor = problema.costo_camino(mejor)
+                    if (criterio == "menor" and costo_camino_hijo < costo_camino_mejor):
+                        mejor = hijo
+                    elif (criterio == "mayor" and costo_camino_hijo > costo_camino_mejor):
+                        mejor = hijo
+        return mejor
