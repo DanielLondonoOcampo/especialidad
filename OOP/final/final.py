@@ -1,12 +1,16 @@
 # %%Clases
+import time
 from datetime import datetime
 
 date_string = datetime.now().strftime("%Y-%m-%d")
 
 class Dorgueria:
-    def __init__(self, medicamentos = [], pacientes=[]) -> None:
+    def __init__(self, medicamentos = [], clientes=[]) -> None:
         self.__medicamentos = self.set_medicamentos(medicamentos)
-        self.__pacientes = pacientes
+        self.__clientes = clientes
+
+    def __str__(self):
+        pass
 
     # Getters y setters
     def get_medicamentos(self):
@@ -23,14 +27,29 @@ class Dorgueria:
         except ValueError as e:
             print(e)
 
-    def get_pacientes(self):
-        return self.__pacientes
+    def get_clientes(self):
+        return self.__clientes
     
-    # def set_pacientes(self, paciente):
-    #     self.__pacientes.append(paciente)
+    # def set_clientes(self, paciente):
+    #     self.__clientes.append(paciente)
     
     # Metodos del negocio
+    def simulate_loading():
+        loading_str = "Loading"
+        dots = 0
+        start_time = time.time()  # record the current time
+        elapsed_time = 0
+        while elapsed_time < 3:
+            print(loading_str + "." * dots, end="\r")
+            time.sleep(0.5)  # pause for half a second
+            dots = (dots + 1) % 4  # cycle through 0, 1, 2, 3 dots
+            elapsed_time = time.time() - start_time  # calculate the elapsed time
 
+    def generar_factura(self):
+        pass
+
+    def realizar_venta(self):
+        pass
 
 
 class Medicamento:
@@ -42,6 +61,17 @@ class Medicamento:
         self.__impuesto = self.set_impuesto(impuesto)
         self.__gramos = self.set_gramos(gramos)
         self.__unidades_disponibles = self.set_unidades_disponibles(unidades_disponibles)
+
+    def __str__(self):
+        return f""" 
+                    Código: {self.__sku}                    
+                    Nombre comercial: {self.__nombre_comercial}
+                    Nombre genérico: {self.__nombre_generico}
+                    Precio: {self.__precio}
+                    Impuesto: {self.__impuesto}
+                    Gramos: {self.__gramos}
+                    Unidades disponibles: {self.__unidades_disponibles}
+                """
 
     # Getters y setters
     def get_sku(self):
@@ -147,3 +177,11 @@ class Libre(Medicamento):
 
     def get_contraindicaciones(self):
         return self.__contraindicaciones
+    
+
+# %%Simulacro de venta
+clientes = {
+    "cliente1" : {"cedula" : 12345, "nombre": "Carlos Obando", "telefono": "3215476", "direccion": "Calle falsa con privet drive - 85"},
+    "cliente2" : {"cedula" : 123456, "nombre": "Jessica Obando", "telefono": "3215476", "direccion": "Calle falsa con privet drive - 85"},
+    "cliente3" : {"cedula" : 1234567, "nombre": "Ivan Obando", "telefono": "3215476", "direccion": "Calle falsa con privet drive - 85"}
+}
