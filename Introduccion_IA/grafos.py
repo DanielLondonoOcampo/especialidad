@@ -19,7 +19,7 @@ class Estado:
 
 # %%Problema
 class Problema:
-    def __init__(self,estado_inicial, estado_objetivo, acciones, costo=None, heuristicas=None):
+    def __init__(self, estado_inicial, estado_objetivo, acciones, costo=None, heuristicas=None):
         self.estado_inicial = estado_inicial
         self.estado_objetivo = estado_objetivo
         self.acciones = acciones
