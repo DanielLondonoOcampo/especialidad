@@ -1,0 +1,183 @@
+
+                    Fecha: 2024-04-12
+
+                    Nombre del cliente: Jesucristo Ramirez
+
+                    Número de cédula: 1167453876
+
+                    Telefono: 7876437
+
+                    Dirección: Calle 1 #2-3
+
+
+                    Su compra:
+ 
+                        Medicamento: Neupax (Alprazolam) x1
+                        Medicamento de venta restringida, médico quien ordena: Daniel Londoño, Telefono: 3335578, Especialidad: Medicina general. Dosis máxima Máximo 10 mg diarios
+                        Miligramos por dosis: 0.25
+                        Precio: 14000.16
+                    
+                        Medicamento: Flectadol (Tizanidina) x2
+                        Contraindicaciones: Evite tomar conjuntamente con quinolonas
+                        Miligramos por dosis: 2.0
+                        Precio: 10000.08
+                    
+Total a pagar: $24000.24
+
+
+                
+                    Fecha: 2024-04-12
+
+                    Nombre del cliente: Eufranco Bustamante
+
+                    Número de cédula: 4567392
+
+                    Telefono: 3657782
+
+                    Dirección: Carrera 4 #5-6
+
+
+                    Su compra:
+ 
+                        Medicamento: Ketolar (Ketamina) x1
+                        Medicamento de venta restringida, médico quien ordena: Ivan Bustillo, Telefono: 3335578, Especialidad: Oncologia. Dosis máxima Máximo 50mg/mL
+                        Miligramos por dosis: 50.0
+                        Precio: 20000.2
+                    
+                        Medicamento: Losartan (Losartan) x1
+                        Contraindicaciones: Sufrimiento fetal en el embarazo
+                        Miligramos por dosis: 50.0
+                        Precio: 8000.05
+                    
+                        Medicamento: Flectadol (Tizanidina) x1
+                        Contraindicaciones: Evite tomar conjuntamente con quinolonas
+                        Miligramos por dosis: 2.0
+                        Precio: 10000.08
+                    
+Total a pagar: $38000.33
+
+
+                
+                    Fecha: 2024-04-12
+
+                    Nombre del cliente: Trinidad Martinez
+
+                    Número de cédula: 7892342
+
+                    Telefono: 4756789
+
+                    Dirección: Calle 7 #8-9
+
+
+                    Su compra:
+ 
+                        Medicamento: Taxus (Tamoxifeno) x1
+                        Contraindicaciones: Contraindicado en sangrado vaginal sin diagnóstico definido
+                        Miligramos por dosis: 20.0
+                        Precio: 9500.05
+                    
+                        Medicamento: Neupax (Alprazolam) x1
+                        Medicamento de venta restringida, médico quien ordena: Daniel Londoño, Telefono: 3335578, Especialidad: Medicina general. Dosis máxima Máximo 10 mg diarios
+                        Miligramos por dosis: 0.25
+                        Precio: 14000.16
+                    
+                        Medicamento: Losartan (Losartan) x3
+                        Contraindicaciones: Sufrimiento fetal en el embarazo
+                        Miligramos por dosis: 50.0
+                        Precio: 8000.05
+                    
+Total a pagar: $31500.26
+
+
+                
+                    Fecha: 2024-04-12
+
+                    Nombre del cliente: Jesucristo Ramirez
+
+                    Número de cédula: 1167453876
+
+                    Telefono: 7876437
+
+                    Dirección: Calle 1 #2-3
+
+
+                    Su compra:
+ 
+                        Medicamento: Neupax (Alprazolam) x1
+                        Medicamento de venta restringida, médico quien ordena: Daniel Londoño, Telefono: 3335578, Especialidad: Medicina general. Dosis máxima Máximo 10 mg diarios
+                        Miligramos por dosis: 0.25
+                        Precio: 14000.16
+                    
+                        Medicamento: Flectadol (Tizanidina) x2
+                        Contraindicaciones: Evite tomar conjuntamente con quinolonas
+                        Miligramos por dosis: 2.0
+                        Precio: 10000.08
+                    
+Total a pagar: $24000.24
+
+
+                
+                    Fecha: 2024-04-12
+
+                    Nombre del cliente: Eufranco Bustamante
+
+                    Número de cédula: 4567392
+
+                    Telefono: 3657782
+
+                    Dirección: Carrera 4 #5-6
+
+
+                    Su compra:
+ 
+                        Medicamento: Ketolar (Ketamina) x1
+                        Medicamento de venta restringida, médico quien ordena: Ivan Bustillo, Telefono: 3335578, Especialidad: Oncologia. Dosis máxima Máximo 50mg/mL
+                        Miligramos por dosis: 50.0
+                        Precio: 20000.2
+                    
+                        Medicamento: Losartan (Losartan) x1
+                        Contraindicaciones: Sufrimiento fetal en el embarazo
+                        Miligramos por dosis: 50.0
+                        Precio: 8000.05
+                    
+                        Medicamento: Flectadol (Tizanidina) x1
+                        Contraindicaciones: Evite tomar conjuntamente con quinolonas
+                        Miligramos por dosis: 2.0
+                        Precio: 10000.08
+                    
+Total a pagar: $38000.33
+
+
+                
+                    Fecha: 2024-04-12
+
+                    Nombre del cliente: Trinidad Martinez
+
+                    Número de cédula: 7892342
+
+                    Telefono: 4756789
+
+                    Dirección: Calle 7 #8-9
+
+
+                    Su compra:
+ 
+                        Medicamento: Taxus (Tamoxifeno) x1
+                        Contraindicaciones: Contraindicado en sangrado vaginal sin diagnóstico definido
+                        Miligramos por dosis: 20.0
+                        Precio: 9500.05
+                    
+                        Medicamento: Neupax (Alprazolam) x1
+                        Medicamento de venta restringida, médico quien ordena: Daniel Londoño, Telefono: 3335578, Especialidad: Medicina general. Dosis máxima Máximo 10 mg diarios
+                        Miligramos por dosis: 0.25
+                        Precio: 14000.16
+                    
+                        Medicamento: Losartan (Losartan) x3
+                        Contraindicaciones: Sufrimiento fetal en el embarazo
+                        Miligramos por dosis: 50.0
+                        Precio: 8000.05
+                    
+Total a pagar: $31500.26
+
+
+                

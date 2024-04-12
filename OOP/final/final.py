@@ -1,10 +1,10 @@
-# %%Clases
+# Clases
 import time
 from datetime import datetime
 
 date_string = datetime.now().strftime("%Y-%m-%d")
 
-class Dorgueria:
+class Drogueria:
     def __init__(self, clientes=[]) -> None:
         self.__clientes = clientes
 
@@ -33,7 +33,7 @@ class Dorgueria:
             print(e)
 
     # Metodos del negocio
-    def simulate_loading():
+    def simulate_loading(self):
         loading_str = "Validando venta"
         dots = 0
         start_time = time.time() 
@@ -51,7 +51,7 @@ class Dorgueria:
                     Número de cédula: {cliente.cedula}\n
                     Telefono: {cliente.telefono}\n
                     Dirección: {cliente.direccion}\n\n
-                    Su compra: {cliente.conteo()}\n
+                    Su compra:\n {cliente.conteo()}\n
 
                 """
 
@@ -59,7 +59,7 @@ class Dorgueria:
         for cliente in self.__clientes:
             factura = self.generar_factura(cliente)
             print("Medicamentos antes de la venta")
-            map(print, cliente.medicamentos)
+            print(cliente)
             for medicamento in cliente.medicamentos:
                 medicamento.disminuir_disponibles()
             with open("ventas.txt", "a") as file:
@@ -67,7 +67,7 @@ class Dorgueria:
             print(factura)
             self.simulate_loading()
             print("Medicamentos después de la venta")
-            map(print, cliente.medicamentos)
+            print(cliente)
 
 
 class Cliente:
@@ -79,6 +79,10 @@ class Cliente:
         self.__medicamentos = medicamentos
         pass
     
+    def __str__(self) -> str:
+        unique_meds = set()
+        return "".join(str(medicamento) for i, medicamento in enumerate(self.__medicamentos) if medicamento not in unique_meds and not unique_meds.add(medicamento))
+
     @property
     def cedula(self):
         return self.__cedula
@@ -86,7 +90,7 @@ class Cliente:
     @cedula.setter
     def cedula(self, cedula):
         try:
-            if cedula.isnumeric():
+            if cedula.isnumeric() or isinstance(cedula, int):
                 self.__cedula = cedula
             else:
                 raise ValueError("Número de cédula incorrecto")
@@ -114,7 +118,7 @@ class Cliente:
     @telefono.setter
     def telefono(self, telefono):
         try:
-            if telefono.isnumeric():
+            if telefono.isnumeric() or isinstance(telefono, int):
                 self.__telefono = telefono
             else:
                 raise ValueError("Número de telefono incorrecto")
@@ -158,22 +162,30 @@ class Cliente:
 
     # Método de clase
     def conteo(self):
-        conteo = 0
-        final = ""
-        total_pago = 0
-        for medicamento in self.__medicamentos:
-            conteo = self.__medicamentos.count(medicamento)
-            precio_final = medicamento.get_precio + medicamento.get_impuesto
-            final += f"""
-                        Medicamento: {medicamento.get_nombre_comercial} ({medicamento.get_nombre_generico}) x{conteo}\n
-                        {f'Medicamento de venta restringida, médico quien ordena: {medicamento.info_medico()}. Dosis máxima {medicamento.get_dosis_maxima}\n' if isinstance(medicamento, Restringido) else f'Contraindicaciones: {medicamento.get_contraindicaciones}\n'}
-                        Miligramos por dosis: {medicamento.get_gramos}\n
-                        Precio: {precio_final}\n\n
+      conteo = 0
+      total_pago = 0
+      final = ""
+      for i, medicamento in enumerate(self.__medicamentos):
+          conteo = self.__medicamentos.count(medicamento)
+          precio_final = medicamento.get_precio() + medicamento.get_impuesto()
+          if i < len(self.__medicamentos) - 1 and medicamento == self.__medicamentos[i + 1]:
+              continue
+          med_info = (
+              f"Medicamento de venta restringida, médico quien ordena: {medicamento.info_medico()}. Dosis máxima {medicamento.get_dosis_maxima()}"
+              if isinstance(medicamento, Restringido)
+              else f"Contraindicaciones: {medicamento.get_contraindicaciones()}"
+          )
+          
+          final += f"""
+                        Medicamento: {medicamento.get_nombre_comercial()} ({medicamento.get_nombre_generico()}) x{conteo}
+                        {med_info}
+                        Miligramos por dosis: {medicamento.get_gramos()}
+                        Precio: {precio_final}
                     """
-            conteo = 0
-            total_pago += (precio_final)
-        final += f"\nTotal a pagar: {total_pago}"
-        return final
+          conteo = 0
+          total_pago += (precio_final)
+      final += f"\nTotal a pagar: ${round(total_pago, 2)}"
+      return final
         
 
 
@@ -189,13 +201,13 @@ class Medicamento:
 
     def __str__(self):
         return f""" 
-                    Código: {self.__sku}                    
-                    Nombre comercial: {self.__nombre_comercial}
-                    Nombre genérico: {self.__nombre_generico}
-                    Precio: {self.__precio}
-                    Impuesto: {self.__impuesto}
-                    Gramos: {self.__gramos}
-                    Unidades disponibles: {self.__unidades_disponibles}
+                    Código: {self.__sku}\n                    
+                    Nombre comercial: {self.__nombre_comercial}\n
+                    Nombre genérico: {self.__nombre_generico}\n
+                    Precio: {self.__precio}\n
+                    Impuesto: {self.__impuesto}\n
+                    Gramos: {self.__gramos}\n
+                    Unidades disponibles: {self.__unidades_disponibles}\n\n
                 """
 
     # Getters y setters
@@ -290,7 +302,7 @@ class Restringido(Medicamento):
         return self.__dosis_maxima
 
     def info_medico(self):
-        return f"{self.__medico["nombre"]}, Telefono: {self.__medico["telefono"]}, Especialidad: {self.__medico["especialidad"]}"
+        return f"{self.__medico['nombre']}, Telefono: {self.__medico['telefono']}, Especialidad: {self.__medico['especialidad']}"
 
 
 class Libre(Medicamento):
@@ -302,11 +314,25 @@ class Libre(Medicamento):
         return self.__contraindicaciones
     
 
-# %%Simulacro de venta
+# Simulacro de venta
 medico1 = {"nombre": "Daniel Londoño", "telefono": "3335578", "especialidad": "Medicina general"}
 medico2 = {"nombre": "Ivan Bustillo", "telefono": "3335578", "especialidad": "Oncologia"}
 medico3 = {"nombre": "Andredi Pumarejo", "telefono": "3335578", "especialidad": "Medicina interna"}
 
+#Medicamentos restringidos
+alprazolam = Restringido("1A00G47J29", "Neupax", "Alprazolam", 14000, "16%", 0.25, 15, medico1, "Máximo 10 mg diarios")
+ketamina = Restringido("8A76G59J", "Ketolar", "Ketamina", 20000, "20%", 50, 20, medico2, "Máximo 50mg/mL")
+lorazepam = Restringido("9A12G65J34", "Ativan", "Lorazepam", 17000, "18%", 2, 17, medico3, "Máximo 10mg diarios")
 
-alprazolam = Restringido(1004729, "Neupax", "Alprazolam", 14000, "16%", 0.25, 7, medico1, "Máximo 10 mg diarios")
-ketamina = Restringido(87659, "Ketolar", "Ketamina", 20000, "20%", 50, 20, medico2, "Máximo 50mg/mL")
+# Medicamentos de venta libre
+losartan = Libre("6A84G95J83", "Losartan", "Losartan", 8000, "5%", 50, 40, "Sufrimiento fetal en el embarazo")
+tizanidina = Libre("5A38G47J4", "Flectadol", "Tizanidina", 10000, "8%", 2, 30, "Evite tomar conjuntamente con quinolonas")
+tamoxifeno = Libre("2A93G84J72", "Taxus", "Tamoxifeno", 9500, "5%", 20, 37, "Contraindicado en sangrado vaginal sin diagnóstico definido")
+
+# Clientes
+cliente1 = Cliente(1167453876, "Jesucristo Ramirez", 7876437, "Calle 1 #2-3", [alprazolam, tizanidina, tizanidina])
+cliente2 = Cliente(4567392, "Eufranco Bustamante", 3657782, "Carrera 4 #5-6", [ketamina, losartan, tizanidina])
+cliente3 = Cliente(7892342, "Trinidad Martinez", 4756789, "Calle 7 #8-9", [tamoxifeno, alprazolam, losartan, losartan, losartan])
+
+drogueria_eia = Drogueria([cliente1, cliente2, cliente3])
+drogueria_eia.realizar_venta()
