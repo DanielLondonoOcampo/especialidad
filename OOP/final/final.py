@@ -81,7 +81,7 @@ class Cliente:
     
     def __str__(self) -> str:
         unique_meds = set()
-        return "".join(str(medicamento) for i, medicamento in enumerate(self.__medicamentos) if medicamento not in unique_meds and not unique_meds.add(medicamento))
+        return "".join(str(medicamento) for medicamento in self.__medicamentos if medicamento not in unique_meds and not unique_meds.add(medicamento))
 
     @property
     def cedula(self):
